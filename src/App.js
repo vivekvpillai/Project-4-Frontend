@@ -3,8 +3,8 @@ import './App.css';
 import axios from 'axios'
 import React, { useState, useEffect } from 'react'
 
-// import Add from './components/Add'
-// import Edit from './components/Edit'
+import Add from './components/Add'
+import Edit from './components/Edit'
 
 function App() {
   let [entries, setEntries] = useState([])
