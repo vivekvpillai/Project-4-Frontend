@@ -11,7 +11,8 @@ function App() {
 
   const getEntries = () => {
     axios
-      .get('http://localhost:8000/api/foods')
+      // .get('http://localhost:8000/api/foods')
+      .get('https://powerful-sierra-13214.herokuapp.com/api/foods')
       .then(
         (response)=> setEntries(response.data),
         (err) => console.error(err)
@@ -21,7 +22,8 @@ function App() {
 
   const handleCreate = (addEntry) => {
     axios
-      .post('http://localhost:8000/api/foods', addEntry).then((response) => {
+      // .post('http://localhost:8000/api/foods', addEntry)
+      .post('https://powerful-sierra-13214.herokuapp.com/api/foods', addEntry).then((response) => {
         console.log(response)
         getEntries()
       })
@@ -29,7 +31,8 @@ function App() {
 
   const handleDelete = (event) => {
     axios
-      .delete('http://localhost:8000/api/foods/' + event.target.value)
+      .delete('https://powerful-sierra-13214.herokuapp.com/api/foods/' + event.target.value)
+      // .delete('http://localhost:8000/api/foods/' + event.target.value)
       .then((response) => {
         getEntries()
       })
@@ -37,7 +40,8 @@ function App() {
 
   const handleUpdate = (editEntry) => {
     axios
-      .put('http://localhost:8000/api/foods/' + editEntry.id, editEntry)
+      .put('https://powerful-sierra-13214.herokuapp.com/api/foods/' + editEntry.id, editEntry)
+      // .put('http://localhost:8000/api/foods/' + editEntry.id, editEntry)
       .then((response) => {
         getEntries()
       })
