@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 
 const Edit = (props) => {
-  let emptyEntry = { id: props.id, name: '', image: '', calories: ''}
+  // let emptyEntry = { id: props.id, name: '', image: '', calories: ''} not needed because we passed props.entry
   const [entry, setEntry] = useState(props.entry)
 
   const handleChange = (event) => {
