@@ -1,9 +1,6 @@
 {
   "name": "project-4-frontend-v",
   "version": "0.1.0",
-  "engines": {
-    "node": "14.7.6"
-  },
   "private": true,
   "dependencies": {
     "@testing-library/jest-dom": "^5.15.0",
