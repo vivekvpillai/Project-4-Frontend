@@ -7,16 +7,17 @@ import Add from './components/Add'
 import Edit from './components/Edit'
 
 function App() {
-  let [entries, setEntries] = useState([])
-  let [totalcals, setTotalcals] = useState([])
+  let [entries, setEntries] = useState([{id:6, name: 'test', image: 'https://www.livewellbakeoften.com/wp-content/uploads/2021/05/Key-Lime-Pie-NEW-7s.jpg', calories: 100}])
+  let [totalcals, setTotalcals] = useState()
 
   const getEntries = () => {
     axios
       // .get('http://localhost:8000/api/foods')
       .get('https://powerful-sierra-13214.herokuapp.com/api/foods')
-      .then(
-        (response)=> setEntries(response.data),
-        (err) => console.error(err)
+      .then((response)=> {
+        totalCal(response.data)
+        setEntries(response.data)
+        }
       )
       .catch((error) => console.error(error))
   }
@@ -48,17 +49,20 @@ function App() {
       })
   }
 
-  const totalCal = (value) => {
+  const totalCal = (values) => {
     let sum=0
-    for (let i=0; i<entries.length;i++) {
-      sum+=entry.calories
+    console.log('sum ' + sum)
+    for (let i=0; i<values.length;i++) {
+      sum+=values[i].calories
+      console.log('test ' + values[i].calories)
+      console.log('hello')
     }
+    console.log('sum ' + sum)
     setTotalcals(sum)
   }
 
   useEffect(() => {
     getEntries()
-    totalCal()
   }, [])
 
   return (
