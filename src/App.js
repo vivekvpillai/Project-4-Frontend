@@ -49,7 +49,9 @@ function App() {
 
   return (
     <>
-    <h1>Hello World</h1>
+    <h1>Add an Entry</h1>
+    <Add handleCreate={handleCreate} />
+    <hr />
     <div className="entries">
       {entries.map((entry) => {
         return(
@@ -60,6 +62,8 @@ function App() {
             <br/>
             <h4>Calories: {entry.calories}</h4>
             <br/>
+            <Edit handleUpdate={handleUpdate} entry={entry} />
+            <button onClick={handleDelete} value={entry.id}>X</button>
           </div>
         )
       })}

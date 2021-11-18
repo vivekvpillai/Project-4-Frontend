@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 
-const Add = (props) => {
-  let emptyEntry = { name: '', image: '', calories: ''}
+const Edit = (props) => {
+  let emptyEntry = { id: props.id, name: '', image: '', calories: ''}
   const [entry, setEntry] = useState(emptyEntry)
 
   const handleChange = (event) => {
@@ -10,13 +10,13 @@ const Add = (props) => {
 
   const handleSubmit = (event) => {
     event.preventDefault()
-    console.log(entry)
-    props.handleCreate(entry)
+    props.handleUpdate(entry)
   }
 
-  return (
+  return(
     <>
-      <h1>Add Entry</h1>
+    <details>
+      <summary>Edit Entry </summary>
       <form onSubmit={handleSubmit}>
         <label htmlFor="name">Name: </label>
         <input type="text" name="name" onChange={handleChange} value={entry.name} />
@@ -26,13 +26,13 @@ const Add = (props) => {
         <input type="text" name="image" onChange={handleChange} value={entry.image} />
         <br/>
         <br/>
-        <label htmlFor="calories">Calories: </label>
+        <label htmlFor="Calories">Calories: </label>
         <input type="number" name="calories" onChange={handleChange} value={entry.calories} />
         <br/>
         <input type="submit" />
       </form>
+    </details>
     </>
   )
-}
 
-export default Add;
+}
