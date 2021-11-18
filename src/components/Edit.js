@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 
 const Edit = (props) => {
   let emptyEntry = { id: props.id, name: '', image: '', calories: ''}
-  const [entry, setEntry] = useState(emptyEntry)
+  const [entry, setEntry] = useState(props.entry)
 
   const handleChange = (event) => {
     setEntry({...entry, [event.target.name]: event.target.value})
@@ -26,7 +26,7 @@ const Edit = (props) => {
         <input type="text" name="image" onChange={handleChange} value={entry.image} />
         <br/>
         <br/>
-        <label htmlFor="Calories">Calories: </label>
+        <label htmlFor="calories">Calories: </label>
         <input type="number" name="calories" onChange={handleChange} value={entry.calories} />
         <br/>
         <input type="submit" />
