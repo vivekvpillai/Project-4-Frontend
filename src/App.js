@@ -8,6 +8,7 @@ import Edit from './components/Edit'
 
 function App() {
   let [entries, setEntries] = useState([])
+  let [totalcals, setTotalcals] = useState([])
 
   const getEntries = () => {
     axios
@@ -47,8 +48,17 @@ function App() {
       })
   }
 
+  const totalCal = (value) => {
+    let sum=0
+    for (let i=0; i<entries.length;i++) {
+      sum+=entry.calories
+    }
+    setTotalcals(sum)
+  }
+
   useEffect(() => {
     getEntries()
+    totalCal()
   }, [])
 
   return (
@@ -56,6 +66,7 @@ function App() {
     <h1>Add an Entry</h1>
     <Add handleCreate={handleCreate} />
     <hr />
+    <h1> Total Calories: {totalcals} </h1>
     <div className="entries">
       {entries.map((entry) => {
         return(
