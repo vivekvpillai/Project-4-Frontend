@@ -7,7 +7,7 @@ import Add from './components/Add'
 import Edit from './components/Edit'
 
 function App() {
-  let [entries, setEntries] = useState([{id:6, name: 'test', image: 'https://www.livewellbakeoften.com/wp-content/uploads/2021/05/Key-Lime-Pie-NEW-7s.jpg', calories: 100}])
+  let [entries, setEntries] = useState([])
   let [totalcals, setTotalcals] = useState()
 
   const getEntries = () => {
