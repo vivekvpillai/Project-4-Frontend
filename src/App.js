@@ -5,10 +5,13 @@ import React, { useState, useEffect } from 'react'
 
 import Add from './components/Add'
 import Edit from './components/Edit'
+import Header from './components/Header'
+import Footer from './components/Footer'
 
 function App() {
   let [entries, setEntries] = useState([])
   let [totalcals, setTotalcals] = useState()
+  let [showAdd, setShowAdd] = useState(false)
 
   const getEntries = () => {
     axios
@@ -61,23 +64,41 @@ function App() {
     setTotalcals(sum)
   }
 
+  const revealAdd = () => {
+      showAdd ? setShowAdd(false) : setShowAdd(true)
+  }
+
   useEffect(() => {
     getEntries()
   }, [])
 
   return (
     <>
-    <h1>Add an Entry</h1>
-    <Add handleCreate={handleCreate} />
+    <Header />
+    <div className = "add">
+        <button className="addBtn" onClick={revealAdd}>Add New Entry</button>
+        {showAdd ?
+            <>
+            <div className = "addComp">
+                <div className = "addCompTextbox">
+                    <h1>Add an Entry</h1>
+                    <Add handleCreate={handleCreate} />
+                    <button onClick={revealAdd}>Close</button>
+                </div>
+            </div>
+            </>
+            :
+            <></>
+        }
+    </div>
     <hr />
-    <h1> Total Calories: {totalcals} </h1>
     <div className="entries">
       {entries.map((entry) => {
         return(
           <div className="entry" key={entry.id}>
             <h4>Name: {entry.name}</h4>
             <br/>
-            <img src={entry.image} />
+            <img className = "imgOne" src={entry.image} />
             <br/>
             <h4>Calories: {entry.calories}</h4>
             <br/>
@@ -87,6 +108,8 @@ function App() {
         )
       })}
     </div>
+    <h1> Total Calories: {totalcals} </h1>
+    <Footer />
     </>
   );
 }

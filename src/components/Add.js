@@ -16,7 +16,6 @@ const Add = (props) => {
 
   return (
     <>
-      <h1>Add Entry</h1>
       <form onSubmit={handleSubmit}>
         <label htmlFor="name">Name: </label>
         <input type="text" name="name" onChange={handleChange} value={entry.name} />
