@@ -27,5 +27,7 @@ const CreateLogin = (props) => {
         </form>
       </>
     )
-  }
+
 }
+
+export default CreateLogin;

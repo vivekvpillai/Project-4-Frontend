@@ -88,7 +88,9 @@ function App() {
   const newLogin = (addUser) => {
     axios
       .post('https://powerful-sierra-13214.herokuapp.com/api/user', addUser).then((response) => {
-        console.log(response)
+        setUsers(response.data)
+        console.log('response ' + response.data)
+        console.log('users ' + users)
       })
   }
 
@@ -97,7 +99,6 @@ function App() {
       .put('https://powerful-sierra-13214.herokuapp.com/api/user/login', loginInfo)
       // .put('http://localhost:8000/api/foods/' + editEntry.id, editEntry)
       .then((response) => {
-        setUsers(response.data)
 
       })
   }
@@ -108,8 +109,8 @@ function App() {
 
   return (
     <div className = "container">
-        <CreateLogin />
-        <Header newLogin={newLogin}/>
+        <CreateLogin newLogin={newLogin}/>
+        <Header />
         <div className = "add">
             <button className="addBtn" onClick={revealAdd}>Add New Entry</button>
             {showAdd ?
