@@ -17,19 +17,14 @@ const Edit = (props) => {
     <>
     <details>
       <summary>Edit Entry </summary>
-      <form onSubmit={handleSubmit}>
+      <form className = "editForm" onSubmit={handleSubmit}>
         <label htmlFor="name">Name: </label>
-        <input type="text" name="name" onChange={handleChange} value={entry.name} />
-        <br />
-        <br />
+        <input className = "editFormField" type="text" name="name" onChange={handleChange} value={entry.name} />
         <label htmlFor="image">Image: </label>
-        <input type="text" name="image" onChange={handleChange} value={entry.image} />
-        <br/>
-        <br/>
+        <input className = "editFormField" type="text" name="image" onChange={handleChange} value={entry.image} />
         <label htmlFor="calories">Calories: </label>
-        <input type="number" name="calories" onChange={handleChange} value={entry.calories} />
-        <br/>
-        <input type="submit" />
+        <input className = "editFormField" type="number" name="calories" onChange={handleChange} value={entry.calories} />
+        <input className = "editSubmit" type="submit" />
       </form>
     </details>
     </>

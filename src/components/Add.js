@@ -16,19 +16,19 @@ const Add = (props) => {
 
   return (
     <>
-      <form onSubmit={handleSubmit}>
+      <form className="addForm" onSubmit={handleSubmit}>
         <label htmlFor="name">Name: </label>
-        <input type="text" name="name" onChange={handleChange} value={entry.name} />
+        <input className = "addFormField" type="text" name="name" onChange={handleChange} value={entry.name} />
         <br />
         <br />
         <label htmlFor="image">Image: </label>
-        <input type="text" name="image" onChange={handleChange} value={entry.image} />
+        <input className = "addFormField" type="text" name="image" onChange={handleChange} value={entry.image} />
         <br/>
         <br/>
         <label htmlFor="calories">Calories: </label>
-        <input type="number" name="calories" onChange={handleChange} value={entry.calories} />
+        <input className = "addFormField" type="number" name="calories" onChange={handleChange} value={entry.calories} />
         <br/>
-        <input type="submit" />
+        <input className = "addSubmit"type="submit" />
       </form>
     </>
   )
