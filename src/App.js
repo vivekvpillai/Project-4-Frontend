@@ -15,6 +15,7 @@ function App() {
   let [showAdd, setShowAdd] = useState(false)
 
   let [users, setUsers] = useState([])
+  let [currentUser, setCurrentUser] = useState([])
 
   const getEntries = () => {
     axios
@@ -23,6 +24,7 @@ function App() {
       .then((response)=> {
         totalCal(response.data)
         setEntries(response.data)
+        console.log(response.data);
         }
       )
       .catch((error) => console.error(error))
@@ -88,9 +90,7 @@ function App() {
   const newLogin = (addUser) => {
     axios
       .post('https://powerful-sierra-13214.herokuapp.com/api/user', addUser).then((response) => {
-        setUsers(response.data)
-        console.log('response ' + response.data)
-        console.log('users ' + users)
+
       })
   }
 
@@ -99,9 +99,11 @@ function App() {
       .put('https://powerful-sierra-13214.herokuapp.com/api/user/login', loginInfo)
       // .put('http://localhost:8000/api/foods/' + editEntry.id, editEntry)
       .then((response) => {
-
+          
       })
   }
+
+
 
   useEffect(() => {
     getEntries()
@@ -144,7 +146,7 @@ function App() {
                 </div>
                 <h3>Calories: {entry.calories}</h3>
                 <h3>Meal: </h3>
-                <h3>Date: </h3>
+                <h3>Date: {entry.created_at}</h3>
                 <button className = "deleteBtn" onClick={handleDelete} value={entry.id}>Remove</button>
               </div>
             )
