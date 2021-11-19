@@ -8,15 +8,15 @@ const CreateLogin = (props) => {
       setEntry({...entry, [event.target.name]: event.target.value})
     }
 
-    const handleSubmit = (event) => {
+    const submitLogin = (event) => {
       event.preventDefault()
       console.log(entry)
-      props.handleCreate(entry)
+      props.newLogin(entry)
     }
 
     return (
       <>
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={submitLogin}>
           <label htmlFor="email">Email: </label>
           <input type="text" name="email" onChange={handleChange} value={entry.email} />
           <br />

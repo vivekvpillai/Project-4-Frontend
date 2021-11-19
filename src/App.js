@@ -7,11 +7,14 @@ import Add from './components/Add'
 import Edit from './components/Edit'
 import Header from './components/Header'
 import Footer from './components/Footer'
+import CreateLogin from './components/CreateLogin'
 
 function App() {
   let [entries, setEntries] = useState([])
   let [totalcals, setTotalcals] = useState()
   let [showAdd, setShowAdd] = useState(false)
+
+  let [users, setUsers] = useState([])
 
   const getEntries = () => {
     axios
@@ -52,6 +55,7 @@ function App() {
       })
   }
 
+  //Calorie Total Calculator
   const totalCal = (values) => {
     let sum=0
     console.log('sum ' + sum)
@@ -64,8 +68,38 @@ function App() {
     setTotalcals(sum)
   }
 
+  //Modal
   const revealAdd = () => {
       showAdd ? setShowAdd(false) : setShowAdd(true)
+  }
+
+////////Login
+  // const getUser = (loginInfo) => {
+  //   axios
+  //     // .get('http://localhost:8000/api/foods')
+  //     .get('https://powerful-sierra-13214.herokuapp.com/api/user/' + loginInfo.id, loginInfo)
+  //     .then((response)=> {
+  //       setUsers(response.data)
+  //       }
+  //     )
+  //     .catch((error) => console.error(error))
+  // }
+
+  const newLogin = (addUser) => {
+    axios
+      .post('https://powerful-sierra-13214.herokuapp.com/api/user', addUser).then((response) => {
+        console.log(response)
+      })
+  }
+
+  const handleLogin = (loginInfo) => {
+    axios
+      .put('https://powerful-sierra-13214.herokuapp.com/api/user/login', loginInfo)
+      // .put('http://localhost:8000/api/foods/' + editEntry.id, editEntry)
+      .then((response) => {
+        setUsers(response.data)
+
+      })
   }
 
   useEffect(() => {
@@ -74,7 +108,8 @@ function App() {
 
   return (
     <div className = "container">
-        <Header />
+        <CreateLogin />
+        <Header newLogin={newLogin}/>
         <div className = "add">
             <button className="addBtn" onClick={revealAdd}>Add New Entry</button>
             {showAdd ?
