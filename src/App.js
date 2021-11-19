@@ -8,13 +8,14 @@ import Edit from './components/Edit'
 import Header from './components/Header'
 import Footer from './components/Footer'
 import CreateLogin from './components/CreateLogin'
+import Login from './components/LoginForm'
 
 function App() {
   let [entries, setEntries] = useState([])
   let [totalcals, setTotalcals] = useState()
   let [showAdd, setShowAdd] = useState(false)
 
-  let [users, setUsers] = useState([])
+  let [user, setUser] = useState([])
 
   const getEntries = () => {
     axios
@@ -88,9 +89,9 @@ function App() {
   const newLogin = (addUser) => {
     axios
       .post('https://powerful-sierra-13214.herokuapp.com/api/user', addUser).then((response) => {
-        setUsers(response.data)
-        console.log('response ' + response.data)
-        console.log('users ' + users)
+        // setUsers(response.data)
+        // console.log('response ' + response.data.email)
+        // console.log('users ' + users.email)
       })
   }
 
@@ -99,7 +100,9 @@ function App() {
       .put('https://powerful-sierra-13214.herokuapp.com/api/user/login', loginInfo)
       // .put('http://localhost:8000/api/foods/' + editEntry.id, editEntry)
       .then((response) => {
-
+        console.log(response)
+        setUser(response.data)
+        console.log(user.email)
       })
   }
 
@@ -110,7 +113,9 @@ function App() {
   return (
     <div className = "container">
         <CreateLogin newLogin={newLogin}/>
+        <Login handleLogin={handleLogin} />
         <Header />
+        {user.email}
         <div className = "add">
             <button className="addBtn" onClick={revealAdd}>Add New Entry</button>
             {showAdd ?

@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 
-const CreateLogin = (props) => {
+const Login = (props) => {
     let emptyEntry = { email: '', password: '' }
     const [entry, setEntry] = useState(emptyEntry)
 
@@ -11,7 +11,7 @@ const CreateLogin = (props) => {
     const submitLogin = (event) => {
       event.preventDefault()
       console.log(entry)
-      props.newLogin(entry)
+      props.handleLogin(entry)
     }
 
     return (
@@ -23,11 +23,11 @@ const CreateLogin = (props) => {
           <label htmlFor="password">Password: </label>
           <input type="password" name="password" value={entry.password} onChange={handleChange} />
           <br/>
-          <input type="submit" value="Register"/>
+          <input type="submit" value="Login"/>
         </form>
       </>
     )
 
 }
 
-export default CreateLogin;
+export default Login;
