@@ -73,44 +73,49 @@ function App() {
   }, [])
 
   return (
-    <>
-    <Header />
-    <div className = "add">
-        <button className="addBtn" onClick={revealAdd}>Add New Entry</button>
-        {showAdd ?
-            <>
-            <div className = "addComp">
-                <div className = "addCompTextbox">
-                    <h1>Add an Entry</h1>
-                    <Add handleCreate={handleCreate} />
-                    <button onClick={revealAdd}>Close</button>
+    <div className = "container">
+        <Header />
+        <div className = "add">
+            <button className="addBtn" onClick={revealAdd}>Add New Entry</button>
+            {showAdd ?
+                <>
+                <div className = "addComp">
+                    <div className = "addCompTextbox">
+                        <h1>Add an Entry</h1>
+                        <Add handleCreate={handleCreate} />
+                        <button className = "addClose" onClick={revealAdd}>Close</button>
+                    </div>
                 </div>
-            </div>
-            </>
-            :
-            <></>
-        }
+                </>
+                :
+                <></>
+            }
+        </div>
+        <hr />
+        <div className = "calories">
+            <h1 className = "totalCalories"> Total Calories: {totalcals} </h1>
+        </div>
+        <hr />
+        <div className="entries">
+          {entries.map((entry) => {
+            return(
+              <div className="entry" key={entry.id}>
+                <h3>Food: {entry.name}</h3>
+                <img className = "imgOne" src={entry.image} />
+                <br/>
+                <div className = "bodyBot">
+                    <Edit handleUpdate={handleUpdate} entry={entry} />
+                </div>
+                <h3>Calories: {entry.calories}</h3>
+                <h3>Meal: </h3>
+                <h3>Date: </h3>
+                <button className = "deleteBtn" onClick={handleDelete} value={entry.id}>Remove</button>
+              </div>
+            )
+          })}
+        </div>
+        <Footer />
     </div>
-    <hr />
-    <div className="entries">
-      {entries.map((entry) => {
-        return(
-          <div className="entry" key={entry.id}>
-            <h4>Name: {entry.name}</h4>
-            <br/>
-            <img className = "imgOne" src={entry.image} />
-            <br/>
-            <h4>Calories: {entry.calories}</h4>
-            <br/>
-            <Edit handleUpdate={handleUpdate} entry={entry} />
-            <button onClick={handleDelete} value={entry.id}>X</button>
-          </div>
-        )
-      })}
-    </div>
-    <h1> Total Calories: {totalcals} </h1>
-    <Footer />
-    </>
   );
 }
 
