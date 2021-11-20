@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 
 const Add = (props) => {
 
-  let emptyEntry = { name: '', image: '', calories: foodCal || ''}
+  // let emptyEntry = { name: '', image: '', calories: foodCal || ''}
 
   let emptyEntry = { name: '', image: '', calories: '', linked_users:[]}
 
