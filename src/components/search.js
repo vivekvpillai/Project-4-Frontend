@@ -1,27 +1,30 @@
 import React, { useState } from 'react'
-
+import axios from 'axios'
 
 const SearchBar = () => {
 
   let [foodCal, setFoodCal] = useState()
   let [query, setQuery] = useState('tomato')
+  console.log(foodCal)
 
   const handleChange = (event)=>{
     setQuery(event.target.value)
   }
 
-  const submitSearch = () => {
-    $.getJSON({
-        method: 'GET',
-        url: 'https://api.calorieninjas.com/v1/nutrition?query=' + query,
-        headers: { 'X-Api-Key': 'ymUhvvBI6d53erZlZI63Bw==knh8lWhx24cZ4ze1'},
-        contentType: 'application/json',
-    }).then(
+  const submitSearch = (event) => {
+    console.log('wow')
+    event.preventDefault()
+    axios
+        .get('https://api.calorieninjas.com/v1/nutrition?query=' + query,
+        {headers:  {'X-Api-Key': 'ymUhvvBI6d53erZlZI63Bw==knh8lWhx24cZ4ze1'}}
+        // ,contentType: 'application/json',
+    ).then(
       (data) => {
-        console.log(data.items[0].calories)
-        setFoodCal(data.items[0].calories)
+        console.log(data.data.items[0].calories)
+        setFoodCal(data.data.items[0].calories)
       }
     );
+    console.log('asgew')
   }
 
 
@@ -37,4 +40,4 @@ const SearchBar = () => {
   );
 };
 
-export default App;
+export default SearchBar;

@@ -15,7 +15,7 @@ function App() {
   let [totalcals, setTotalcals] = useState()
   let [showAdd, setShowAdd] = useState(false)
 
-  let [user, setUser] = useState([])
+  let [user, setUser] = useState([{}])
 
   const getEntries = () => {
     axios
