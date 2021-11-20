@@ -38,10 +38,19 @@ function App() {
           // console.log(data);
         totalCal(response.data)
         setEntries(response.data)
-        console.log(response.data);
+        // console.log(response.data);
         }
       )
       .catch((error) => console.error(error))
+  }
+
+  const getUserEntries = () => {
+    for (const food of entries) {
+      if (food.linked_users.includes(user.id)){
+        console.log(food)
+      }
+    }
+    console.log('here', entries)
   }
 
   const handleCreate = (addEntry) => {
@@ -117,6 +126,9 @@ function App() {
       .then((response) => {
         setUser(response.data)
         localStorage.setItem('user', JSON.stringify(response.data))
+        // if (user) {
+        //   getUserEntries()
+        // }
       })
   }
 
@@ -134,7 +146,9 @@ function App() {
       }
   }, [])
 
-
+  useEffect(() => {
+    getUserEntries()
+  }, [user])
 
   useEffect(() => {
     getEntries()
