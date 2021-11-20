@@ -22,6 +22,20 @@ function App() {
       // .get('http://localhost:8000/api/foods')
       .get('https://powerful-sierra-13214.herokuapp.com/api/foods')
       .then((response)=> {
+          // console.log(response.data[0].linked_users);
+          // for(let i = 0; i < response.data.length; i++) {
+          //     // console.log(response.data[i]);
+          //     for(let j = 0; j < response.data[i].linked_users.length; j++){
+          //         // console.log(response.data[i].linked_users[j]);
+          //         if (response.data[i].linked_users[j] == user.id) {
+          //             console.log(response.data[i]);
+          //             setEntries(response.data[i])
+          //             console.log(entries);
+          //         }
+          //     }
+          // }
+          // const data = response.data.filter(food => food.linked_users.includes(user.id))
+          // console.log(data);
         totalCal(response.data)
         setEntries(response.data)
         console.log(response.data);
@@ -60,13 +74,13 @@ function App() {
   //Calorie Total Calculator
   const totalCal = (values) => {
     let sum=0
-    console.log('sum ' + sum)
+    // console.log('sum ' + sum)
     for (let i=0; i<values.length;i++) {
       sum+=values[i].calories
-      console.log('test ' + values[i].calories)
-      console.log('hello')
+      // console.log('test ' + values[i].calories)
+      // console.log('hello')
     }
-    console.log('sum ' + sum)
+    // console.log('sum ' + sum)
     setTotalcals(sum)
   }
 
@@ -101,11 +115,24 @@ function App() {
       .put('https://powerful-sierra-13214.herokuapp.com/api/user/login', loginInfo)
       // .put('http://localhost:8000/api/foods/' + editEntry.id, editEntry)
       .then((response) => {
-        console.log(response)
         setUser(response.data)
-        console.log(user.email)
+        localStorage.setItem('user', JSON.stringify(response.data))
       })
   }
+
+  const handleLogOut = () => {
+      setUser({});
+      localStorage.clear();
+  }
+
+  useEffect(() => {
+      const loggedInUser = localStorage.getItem('user');
+      if (loggedInUser) {
+          const foundUser = JSON.parse(loggedInUser)
+          setUser(foundUser)
+          // console.log(user);
+      }
+  }, [])
 
 
 
@@ -115,10 +142,13 @@ function App() {
 
   return (
     <div className = "container">
-        <CreateLogin newLogin={newLogin}/>
-        <Login handleLogin={handleLogin} />
         <Header />
-        {user.email}
+        <div className = "nav">
+            <CreateLogin newLogin={newLogin}/>
+            <Login handleLogin={handleLogin} />
+            <button onClick={handleLogOut}>Log Out</button>
+            {user.email}
+        </div>
         <div className = "add">
             <button className="addBtn" onClick={revealAdd}>Add New Entry</button>
             {showAdd ?
@@ -126,7 +156,7 @@ function App() {
                 <div className = "addComp">
                     <div className = "addCompTextbox">
                         <h1>Add an Entry</h1>
-                        <Add handleCreate={handleCreate} />
+                        <Add handleCreate={handleCreate} user={user}/>
                         <button className = "addClose" onClick={revealAdd}>Close</button>
                     </div>
                 </div>
