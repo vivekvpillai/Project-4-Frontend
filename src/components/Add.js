@@ -1,11 +1,11 @@
 import React, { useState } from 'react'
 
 const Add = (props) => {
-<<<<<<< HEAD
+
   let emptyEntry = { name: '', image: '', calories: foodCal || ''}
-=======
+
   let emptyEntry = { name: '', image: '', calories: '', linked_users:[]}
->>>>>>> 7eae630e800cd18e926797785f09f4ae31cc9218
+
   const [entry, setEntry] = useState(emptyEntry)
   let [foodCal, setFoodCal] = useState()
 
