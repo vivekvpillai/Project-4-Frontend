@@ -18,15 +18,56 @@ button {
 
 .nav {
     display: flex;
-    justify-content: space-between;
     padding: 2%;
     background: darkslategray;
     margin-top: 2%;
+    padding-bottom: 4%;
 }
 
-.imgOne {
-    width: 30vw;
-    height: 40vh;
+.userNav {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    justify-content: center;
+    width: 100%;
+}
+
+.greetUser {
+    color: white;
+}
+
+.logOutBtn {
+    border-radius: 3px;
+    background: gainsboro;
+    color: black;
+    height: 4vh;
+    width: 10vw;
+    margin-left: 2%;
+}
+
+.noUserNav {
+    color: white;
+    display: flex;
+    width: 35%;
+    justify-content: space-between;
+}
+
+.registerBtn {
+    border-radius: 3px;
+    background: gainsboro;
+    border: none;
+    width: 10vw;
+    height: 4vh;
+    margin-top: 2%;
+}
+
+.loginBtn {
+    border-radius: 3px;
+    background: gainsboro;
+    border: none;
+    width: 10vw;
+    height: 4vh;
+    margin-top: 2%;
 }
 
 .headerDiv {
@@ -57,6 +98,11 @@ button {
     background: beige;
     padding-left: 2.5%;
     margin-top: 8%;
+}
+
+.imgOne {
+    width: 30vw;
+    height: 40vh;
 }
 
 .add {

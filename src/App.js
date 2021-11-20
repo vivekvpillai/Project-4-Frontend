@@ -1,6 +1,7 @@
 import logo from './logo.svg';
 import './App.css';
 import axios from 'axios'
+import moment from 'moment'
 import React, { useState, useEffect } from 'react'
 
 import Add from './components/Add'
@@ -160,10 +161,17 @@ function App() {
     <div className="container">
       <Header />
       <div className="nav">
-        <CreateLogin newLogin={newLogin} />
-        <Login handleLogin={handleLogin} />
-        <button onClick={handleLogOut}>Log Out</button>
-        {user.email}
+        {user.id ?
+        <div className = "userNav">
+            <p className = "greetUser">User Email: {user.email}</p>
+            <button className = "logOutBtn" onClick={handleLogOut}>Log Out</button>
+        </div>
+        :
+        <div className = "noUserNav">
+            <Login handleLogin={handleLogin} />
+            <CreateLogin newLogin={newLogin} />
+        </div>
+        }
       </div>
       <div className="add">
         <button className="addBtn" onClick={revealAdd}>Add New Entry</button>
@@ -181,14 +189,14 @@ function App() {
           <></>
         }
       </div>
-      <hr />
-      <div className="calories">
-            <h1 className="totalCalories"> Total Calories: {totalcals} </h1>
-          </div>
-      <hr />
+        <hr />
+            <div className="calories">
+                <h1 className="totalCalories"> Total Calories: {totalcals} </h1>
+            </div>
+        <hr />
       {user.id ?
       <>
-        <h1>FOUND USER</h1>
+        <h3>{user.email}</h3>
         <div className="entries">
         {userEntries.map((entry) => {
           return (
@@ -197,7 +205,7 @@ function App() {
               <img className="imgOne" src={entry.image} />
               <br />
               <div className="bodyBot">
-                <Edit handleUpdate={handleUpdate} entry={entry} />
+              <Edit handleUpdate={handleUpdate} entry={entry} />
               </div>
               <h3>Calories: {entry.calories}</h3>
               <h3>Meal: </h3>
@@ -206,10 +214,9 @@ function App() {
             </div>
           )
         })}
-      </div>
+        </div>
       </>
         :
-
         <div className="entries">
           {entries.map((entry) => {
             return (
