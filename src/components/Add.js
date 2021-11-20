@@ -1,16 +1,19 @@
 import React, { useState } from 'react'
 
 const Add = (props) => {
-  let emptyEntry = { name: '', image: '', calories: ''}
+  let emptyEntry = { name: '', image: '', calories: '', linked_users:[]}
   const [entry, setEntry] = useState(emptyEntry)
 
   const handleChange = (event) => {
     setEntry({...entry, [event.target.name]: event.target.value})
+
   }
 
   const handleSubmit = (event) => {
     event.preventDefault()
     console.log(entry)
+    entry.linked_users.push(props.user.id)
+    console.log(entry);
     props.handleCreate(entry)
   }
 
@@ -28,7 +31,7 @@ const Add = (props) => {
         <label htmlFor="calories">Calories: </label>
         <input className = "addFormField" type="number" name="calories" onChange={handleChange} value={entry.calories} />
         <br/>
-        <input className = "addSubmit"type="submit" />
+        <input className = "addSubmit" type="submit" />
       </form>
     </>
   )
