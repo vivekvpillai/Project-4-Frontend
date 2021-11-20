@@ -14,43 +14,45 @@ function App() {
   let [entries, setEntries] = useState([])
   let [totalcals, setTotalcals] = useState()
   let [showAdd, setShowAdd] = useState(false)
-
+  let [userEntries, setUserEntries] = useState([])
   let [user, setUser] = useState([])
 
   const getEntries = () => {
     axios
       // .get('http://localhost:8000/api/foods')
       .get('https://powerful-sierra-13214.herokuapp.com/api/foods')
-      .then((response)=> {
-          // console.log(response.data[0].linked_users);
-          // for(let i = 0; i < response.data.length; i++) {
-          //     // console.log(response.data[i]);
-          //     for(let j = 0; j < response.data[i].linked_users.length; j++){
-          //         // console.log(response.data[i].linked_users[j]);
-          //         if (response.data[i].linked_users[j] == user.id) {
-          //             console.log(response.data[i]);
-          //             setEntries(response.data[i])
-          //             console.log(entries);
-          //         }
-          //     }
-          // }
-          // const data = response.data.filter(food => food.linked_users.includes(user.id))
-          // console.log(data);
+      .then((response) => {
+        // console.log(response.data[0].linked_users);
+        // for(let i = 0; i < response.data.length; i++) {
+        //     // console.log(response.data[i]);
+        //     for(let j = 0; j < response.data[i].linked_users.length; j++){
+        //         // console.log(response.data[i].linked_users[j]);
+        //         if (response.data[i].linked_users[j] == user.id) {
+        //             console.log(response.data[i]);
+        //             setEntries(response.data[i])
+        //             console.log(entries);
+        //         }
+        //     }
+        // }
+        // const data = response.data.filter(food => food.linked_users.includes(user.id))
+        // console.log(data);
         totalCal(response.data)
         setEntries(response.data)
         // console.log(response.data);
-        }
+      }
       )
       .catch((error) => console.error(error))
   }
 
   const getUserEntries = () => {
+    const tempUserEntries = []
     for (const food of entries) {
-      if (food.linked_users.includes(user.id)){
-        console.log(food)
+      if (food.linked_users.includes(user.id)) {
+        tempUserEntries.push(food)
       }
     }
-    console.log('here', entries)
+    console.log('jj eats:', tempUserEntries)
+    setUserEntries(tempUserEntries)
   }
 
   const handleCreate = (addEntry) => {
@@ -82,10 +84,10 @@ function App() {
 
   //Calorie Total Calculator
   const totalCal = (values) => {
-    let sum=0
+    let sum = 0
     // console.log('sum ' + sum)
-    for (let i=0; i<values.length;i++) {
-      sum+=values[i].calories
+    for (let i = 0; i < values.length; i++) {
+      sum += values[i].calories
       // console.log('test ' + values[i].calories)
       // console.log('hello')
     }
@@ -95,10 +97,10 @@ function App() {
 
   //Modal
   const revealAdd = () => {
-      showAdd ? setShowAdd(false) : setShowAdd(true)
+    showAdd ? setShowAdd(false) : setShowAdd(true)
   }
 
-////////Login
+  ////////Login
   // const getUser = (loginInfo) => {
   //   axios
   //     // .get('http://localhost:8000/api/foods')
@@ -133,17 +135,17 @@ function App() {
   }
 
   const handleLogOut = () => {
-      setUser({});
-      localStorage.clear();
+    setUser({});
+    localStorage.clear();
   }
 
   useEffect(() => {
-      const loggedInUser = localStorage.getItem('user');
-      if (loggedInUser) {
-          const foundUser = JSON.parse(loggedInUser)
-          setUser(foundUser)
-          // console.log(user);
-      }
+    const loggedInUser = localStorage.getItem('user');
+    if (loggedInUser) {
+      const foundUser = JSON.parse(loggedInUser)
+      setUser(foundUser)
+      // console.log(user);
+    }
   }, [])
 
   useEffect(() => {
@@ -155,54 +157,79 @@ function App() {
   }, [])
 
   return (
-    <div className = "container">
-        <Header />
-        <div className = "nav">
-            <CreateLogin newLogin={newLogin}/>
-            <Login handleLogin={handleLogin} />
-            <button onClick={handleLogOut}>Log Out</button>
-            {user.email}
-        </div>
-        <div className = "add">
-            <button className="addBtn" onClick={revealAdd}>Add New Entry</button>
-            {showAdd ?
-                <>
-                <div className = "addComp">
-                    <div className = "addCompTextbox">
-                        <h1>Add an Entry</h1>
-                        <Add handleCreate={handleCreate} user={user}/>
-                        <button className = "addClose" onClick={revealAdd}>Close</button>
-                    </div>
-                </div>
-                </>
-                :
-                <></>
-            }
-        </div>
-        <hr />
-        <div className = "calories">
-            <h1 className = "totalCalories"> Total Calories: {totalcals} </h1>
-        </div>
-        <hr />
+    <div className="container">
+      <Header />
+      <div className="nav">
+        <CreateLogin newLogin={newLogin} />
+        <Login handleLogin={handleLogin} />
+        <button onClick={handleLogOut}>Log Out</button>
+        {user.email}
+      </div>
+      <div className="add">
+        <button className="addBtn" onClick={revealAdd}>Add New Entry</button>
+        {showAdd ?
+          <>
+            <div className="addComp">
+              <div className="addCompTextbox">
+                <h1>Add an Entry</h1>
+                <Add handleCreate={handleCreate} user={user} />
+                <button className="addClose" onClick={revealAdd}>Close</button>
+              </div>
+            </div>
+          </>
+          :
+          <></>
+        }
+      </div>
+      <hr />
+      <div className="calories">
+            <h1 className="totalCalories"> Total Calories: {totalcals} </h1>
+          </div>
+      <hr />
+      {user.id ?
+      <>
+        <h1>FOUND USER</h1> 
+        <div className="entries">
+        {userEntries.map((entry) => {
+          return (
+            <div className="entry" key={entry.id}>
+              <h3>Food: {entry.name}</h3>
+              <img className="imgOne" src={entry.image} />
+              <br />
+              <div className="bodyBot">
+                <Edit handleUpdate={handleUpdate} entry={entry} />
+              </div>
+              <h3>Calories: {entry.calories}</h3>
+              <h3>Meal: </h3>
+              <h3>Date: {entry.created_at}</h3>
+              <button className="deleteBtn" onClick={handleDelete} value={entry.id}>Remove</button>
+            </div>
+          )
+        })}
+      </div>
+      </>
+        :
+
         <div className="entries">
           {entries.map((entry) => {
-            return(
+            return (
               <div className="entry" key={entry.id}>
                 <h3>Food: {entry.name}</h3>
-                <img className = "imgOne" src={entry.image} />
-                <br/>
-                <div className = "bodyBot">
-                    <Edit handleUpdate={handleUpdate} entry={entry} />
+                <img className="imgOne" src={entry.image} />
+                <br />
+                <div className="bodyBot">
+                  <Edit handleUpdate={handleUpdate} entry={entry} />
                 </div>
                 <h3>Calories: {entry.calories}</h3>
                 <h3>Meal: </h3>
                 <h3>Date: {entry.created_at}</h3>
-                <button className = "deleteBtn" onClick={handleDelete} value={entry.id}>Remove</button>
+                <button className="deleteBtn" onClick={handleDelete} value={entry.id}>Remove</button>
               </div>
             )
           })}
         </div>
-        <Footer />
+      }
+      <Footer />
     </div>
   );
 }
