@@ -1,8 +1,14 @@
 import React, { useState } from 'react'
 
 const Add = (props) => {
+
+  let emptyEntry = { name: '', image: '', calories: foodCal || ''}
+
   let emptyEntry = { name: '', image: '', calories: '', linked_users:[]}
+
   const [entry, setEntry] = useState(emptyEntry)
+  let [foodCal, setFoodCal] = useState()
+
 
   const handleChange = (event) => {
     setEntry({...entry, [event.target.name]: event.target.value})
