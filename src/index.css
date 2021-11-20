@@ -16,6 +16,14 @@ button {
     color: white;
 }
 
+.nav {
+    display: flex;
+    justify-content: space-between;
+    padding: 2%;
+    background: darkslategray;
+    margin-top: 2%;
+}
+
 .imgOne {
     width: 30vw;
     height: 40vh;
