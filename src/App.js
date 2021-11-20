@@ -10,6 +10,7 @@ import Header from './components/Header'
 import Footer from './components/Footer'
 import CreateLogin from './components/CreateLogin'
 import Login from './components/LoginForm'
+import { __SECRET_INTERNALS_DO_NOT_USE_OR_YOU_WILL_BE_FIRED } from 'react';
 
 function App() {
   let [entries, setEntries] = useState([])
@@ -37,7 +38,7 @@ function App() {
         // }
         // const data = response.data.filter(food => food.linked_users.includes(user.id))
         // console.log(data);
-        totalCal(response.data)
+        // totalCal(response.data)
         setEntries(response.data)
         // console.log(response.data);
       }
@@ -53,6 +54,7 @@ function App() {
       }
     }
     console.log('jj eats:', tempUserEntries)
+    totalCal(tempUserEntries)
     setUserEntries(tempUserEntries)
   }
 
@@ -62,6 +64,7 @@ function App() {
       .post('https://powerful-sierra-13214.herokuapp.com/api/foods', addEntry).then((response) => {
         console.log(response)
         getEntries()
+        getUserEntries()
       })
   }
 
@@ -151,10 +154,12 @@ function App() {
 
   useEffect(() => {
     getUserEntries()
-  }, [user])
+  }, [user, entries])
+
 
   useEffect(() => {
     getEntries()
+    getUserEntries()
   }, [])
 
   return (
@@ -189,14 +194,18 @@ function App() {
           <></>
         }
       </div>
-        <hr />
-            <div className="calories">
-                <h1 className="totalCalories"> Total Calories: {totalcals} </h1>
-            </div>
-        <hr />
+      <hr />
+      {user.id && 
+      <>
+      <h2>Welcome {user.email} </h2>
+      <div className="calories">
+            <h1 className="totalCalories"> Total Calories: {totalcals} </h1>
+          </div>
+          </>
+}
+      <hr />
       {user.id ?
       <>
-        <h3>{user.email}</h3>
         <div className="entries">
         {userEntries.map((entry) => {
           return (
