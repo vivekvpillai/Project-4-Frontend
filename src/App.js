@@ -217,7 +217,6 @@ function App() {
               <Edit handleUpdate={handleUpdate} entry={entry} />
               </div>
               <h3>Calories: {entry.calories}</h3>
-              <h3>Meal: </h3>
               <h3>Date: {moment(entry.created_at).format('MM-DD-YYYY')}</h3>
               <button className="deleteBtn" onClick={handleDelete} value={entry.id}>Remove</button>
             </div>
