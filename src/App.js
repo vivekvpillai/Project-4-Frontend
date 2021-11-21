@@ -1,7 +1,7 @@
 import logo from './logo.svg';
 import './App.css';
 import axios from 'axios'
-// import moment from 'moment'
+import moment from 'moment'
 import React, { useState, useEffect } from 'react'
 
 import Add from './components/Add'
