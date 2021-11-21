@@ -163,89 +163,91 @@ function App() {
     getUserEntries()
   }, [])
 
-  return (
-    <div className="container">
-      <Header />
-      <div className="nav">
-        {user.id ?
-        <div className = "userNav">
-            <p className = "greetUser">User Email: {user.email}</p>
-            <button className = "logOutBtn" onClick={handleLogOut}>Log Out</button>
-        </div>
-        :
-        <div className = "noUserNav">
-            <Login handleLogin={handleLogin} />
-            <CreateLogin newLogin={newLogin} />
-        </div>
-        }
-      </div>
-      <div className="add">
-        <button className="addBtn" onClick={revealAdd}>Add New Entry</button>
-        {showAdd ?
-          <>
-            <div className="addComp">
-              <div className="addCompTextbox">
-                <Add handleCreate={handleCreate} user={user} />
-                <button className="addClose" onClick={revealAdd}>Close</button>
-              </div>
-            </div>
-          </>
-          :
-          <></>
-        }
-      </div>
-      {user.id &&
-      <>
-      <hr />
-      <div className="calories">
-            <h1 className="totalCalories"> Total Calories: {totalcals} </h1>
-            <Chart userEntries={userEntries}/>
-      </div>
-      </>
-      }
-      <hr />
-      {user.id ?
-      <>
-        <div className="entries">
-        {userEntries.map((entry) => {
-          return (
-            <div className="entry" key={entry.id}>
-              <h3>Food: {entry.name}</h3>
-              <img className="imgOne" src={entry.image} />
-              <br />
-              <div className="bodyBot">
-              <Edit handleUpdate={handleUpdate} entry={entry} />
-              </div>
-              <h3>Calories: {entry.calories}</h3>
-              <h3>Date: {moment(entry.created_at).format('MM-DD-YYYY')}</h3>
-              <button className="deleteBtn" onClick={handleDelete} value={entry.id}>Remove</button>
-            </div>
-          )
-        })}
-        </div>
-      </>
-        :
-        <div className="entries">
-          {entries.map((entry) => {
-            return (
-              <div className="entry" key={entry.id}>
-                <h3>Food: {entry.name}</h3>
-                <img className="imgOne" src={entry.image} />
-                <br />
-                <div className="bodyBot">
-                  <Edit handleUpdate={handleUpdate} entry={entry} />
+    return (
+        <div className="container">
+            <Header />
+                <div className = "smallContainer">
+                    <div className="nav">
+                        {user.id ?
+                        <div className = "userNav">
+                            <p className = "greetUser">User Email: {user.email}</p>
+                            <button className = "logOutBtn" onClick={handleLogOut}>Log Out</button>
+                        </div>
+                        :
+                        <div className = "noUserNav">
+                            <Login handleLogin={handleLogin} />
+                            <CreateLogin newLogin={newLogin} />
+                        </div>
+                        }
+                    </div>
+                <div className="add">
+                    {user.id ?
+                        <button className="addBtn" onClick={revealAdd}>Add New Entry</button>
+                        :
+                        <></>
+                    }
+                    {showAdd ?
+                        <>
+                            <div className="addComp">
+                                <div className="addCompTextbox">
+                                    <Add handleCreate={handleCreate} user={user} />
+                                    <button className="addClose" onClick={revealAdd}>Close</button>
+                                </div>
+                            </div>
+                        </>
+                        :
+                        <></>
+                    }
                 </div>
-                <h3>Entry Date: {moment(entry.created_at).format('MM-DD-YYYY')}</h3>
-                <h3>Calories: {entry.calories}</h3>
-                <button className="deleteBtn" onClick={handleDelete} value={entry.id}>Remove</button>
-              </div>
-            )
-          })}
+                {user.id &&
+                    <>
+                        <hr />
+                        <div className="calories">
+                            <h1 className="totalCalories"> Total Calories: {totalcals} </h1>
+                            <Chart userEntries={userEntries}/>
+                        </div>
+                    </>
+                }
+                <hr />
+                {user.id ?
+                    <>
+                    <div className="entries">
+                        {userEntries.map((entry) => {
+                            return (
+                                <div className="entry" key={entry.id}>
+                                    <h3 className = "entryName">Food: {entry.name}</h3>
+                                    <img className="imgOne" src={entry.image} />
+                                    <br />
+                                    <div className="bodyBot">
+                                        <Edit handleUpdate={handleUpdate} entry={entry} />
+                                    </div>
+                                    <h3>Calories: {entry.calories}</h3>
+                                    <h3>Date: {moment(entry.created_at).format('MM-DD-YYYY')}</h3>
+                                    <button className="deleteBtn" onClick={handleDelete} value={entry.id}>Remove</button>
+                                </div>
+                            )
+                        })}
+                        </div>
+                    </>
+                :
+                    <div className="entries">
+                        {entries.map((entry) => {
+                            return (
+                            <div className="entry" key={entry.id}>
+                                <h3 className = "entryName">Food: {entry.name}</h3>
+                                <img className="imgOne" src={entry.image} />
+                                <br />
+                                <h3>Entry Date: {moment(entry.created_at).format('MM-DD-YYYY')}</h3>
+                                <h3>Calories: {entry.calories}</h3>
+                            </div>
+                            )
+                        })}
+                    </div>
+                }
+                </div>
+            <Footer />
         </div>
-      }
-      <Footer />
-    </div>
-  );
+    );
 }
 
 export default App;
