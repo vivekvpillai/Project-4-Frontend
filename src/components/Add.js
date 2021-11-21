@@ -66,7 +66,7 @@ const submitSearch = (event) => {
       </div>
 
       <div className="searchCals">
-        <h1>Search A Food's Calorie</h1>
+        <h1>Search Third Party's API</h1>
         <form onSubmit={submitSearch}>
             <label htmlFor="search">Search: </label>
             <br />
