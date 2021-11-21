@@ -10,6 +10,7 @@ import Header from './components/Header'
 import Footer from './components/Footer'
 import CreateLogin from './components/CreateLogin'
 import Login from './components/LoginForm'
+import Chart from './components/Chart'
 import { __SECRET_INTERNALS_DO_NOT_USE_OR_YOU_WILL_BE_FIRED } from 'react';
 
 function App() {
@@ -184,7 +185,6 @@ function App() {
           <>
             <div className="addComp">
               <div className="addCompTextbox">
-                <h1>Add an Entry</h1>
                 <Add handleCreate={handleCreate} user={user} />
                 <button className="addClose" onClick={revealAdd}>Close</button>
               </div>
@@ -194,15 +194,15 @@ function App() {
           <></>
         }
       </div>
-      <hr />
       {user.id &&
       <>
-      <h2>Welcome {user.email} </h2>
+      <hr />
       <div className="calories">
             <h1 className="totalCalories"> Total Calories: {totalcals} </h1>
-          </div>
-          </>
-}
+            <Chart userEntries={userEntries}/>
+      </div>
+      </>
+      }
       <hr />
       {user.id ?
       <>
@@ -218,7 +218,7 @@ function App() {
               </div>
               <h3>Calories: {entry.calories}</h3>
               <h3>Meal: </h3>
-              <h3>Date: {entry.created_at}</h3>
+              <h3>Date: {moment(entry.created_at).format('MM-DD-YYYY')}</h3>
               <button className="deleteBtn" onClick={handleDelete} value={entry.id}>Remove</button>
             </div>
           )
@@ -236,9 +236,8 @@ function App() {
                 <div className="bodyBot">
                   <Edit handleUpdate={handleUpdate} entry={entry} />
                 </div>
+                <h3>Entry Date: {moment(entry.created_at).format('MM-DD-YYYY')}</h3>
                 <h3>Calories: {entry.calories}</h3>
-                <h3>Meal: </h3>
-                <h3>Date: {entry.created_at}</h3>
                 <button className="deleteBtn" onClick={handleDelete} value={entry.id}>Remove</button>
               </div>
             )
