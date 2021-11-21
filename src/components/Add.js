@@ -50,14 +50,13 @@ const submitSearch = (event) => {
   return (
     <>
       <div className="addSection">
+        <h1>Add an Entry</h1>
         <form className="addForm" onSubmit={handleSubmit}>
           <label htmlFor="name">Name: </label>
           <input className = "addFormField" type="text" name="name" onChange={handleChange} value={entry.name} />
           <br />
-          <br />
           <label htmlFor="image">Image: </label>
           <input className = "addFormField" type="text" name="image" onChange={handleChange} value={entry.image} />
-          <br/>
           <br/>
           <label htmlFor="calories">Calories: </label>
           <input className = "addFormField" type="number" name="calories" onChange={handleChange} value={entry.calories} />
@@ -66,14 +65,17 @@ const submitSearch = (event) => {
         </form>
       </div>
 
-      <div className="SearchCals">
+      <div className="searchCals">
+        <h1>Search A Food's Calorie</h1>
         <form onSubmit={submitSearch}>
-        <label htmlFor="search">Search: </label>
-        <input type="text" name="search" value={query} onChange={handleQueryChange} />
-        <br/>
-        <input type="submit" value="Search"/>
-        {foodCal}
+            <label htmlFor="search">Search: </label>
+            <br />
+            <input className = "addFormField" type="text" name="search" value={query} onChange={handleQueryChange} />
+            <br/>
+            <input className = "searchBtn" type="submit" value="Search"/>
+            <br/>
         </form>
+        <p><u>Calories: {foodCal}</u></p>
       </div>
     </>
   )

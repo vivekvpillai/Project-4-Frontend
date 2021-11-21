@@ -83,8 +83,17 @@ button {
     text-align: center;
     background: darkslategray;
     display: flex;
+    flex-direction: column;
     justify-content: center;
+    align-items: center;
     color: white;
+    height: 70vh;
+}
+
+.barChart {
+    display: flex;
+    height: 50vh;
+    width: 50vw;
 }
 
 .entries {
@@ -133,13 +142,29 @@ button {
 }
 
 .addCompTextbox {
+    display: flex;
+    justify-content: center;
     background-color: gainsboro;
     height: 100%;
     width: 100%;
     border-radius: 2px;
     box-shadow: 0 2px 2px rgba(0, 0, 0, 0.2);
     text-align: center;
-    padding: 1%;
+
+}
+
+.searchCals {
+    margin-left: 2%;
+}
+
+.searchBtn {
+    border: none;
+    border-radius: 3px;
+    background: darkslategray;
+    color: white;
+    height: 3vh;
+    width: 10vw;
+    margin-top: 3%;
 }
 
 .addForm {
@@ -161,7 +186,7 @@ button {
     background: darkslategray;
     color: white;
     height: 3vh;
-    width: 5vw;
+    width: 10vw;
 }
 
 .addClose {
@@ -172,7 +197,7 @@ button {
     height: 3vh;
     position: absolute;
     left: 45%;
-    bottom: 33%;
+    bottom: 10%;
 }
 
 .bodyBot {
