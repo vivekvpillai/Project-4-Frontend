@@ -1,7 +1,7 @@
 import logo from './logo.svg';
 import './App.css';
 import axios from 'axios'
-// import moment from 'moment'
+import moment from 'moment'
 import React, { useState, useEffect } from 'react'
 
 import Add from './components/Add'
@@ -185,7 +185,7 @@ function App() {
           <>
             <div className="addComp">
               <div className="addCompTextbox">
-                <Add handleCreate={handleCreate} user={user} />
+                <Add handleCreate={handleCreate} entries={entries} user={user} />
                 <button className="addClose" onClick={revealAdd}>Close</button>
               </div>
             </div>

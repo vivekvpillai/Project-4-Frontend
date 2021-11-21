@@ -53,7 +53,16 @@ const submitSearch = (event) => {
         <h1>Add an Entry</h1>
         <form className="addForm" onSubmit={handleSubmit}>
           <label htmlFor="name">Name: </label>
-          <input className = "addFormField" type="text" name="name" onChange={handleChange} value={entry.name} />
+          <input className = "addFormField" type="text" name="name" list="food-data" onChange={handleChange} value={entry.name} />
+          <datalist id="food-data">
+            {props.entries.map((afood) => {
+              return(
+              <option>{afood.name}</option>
+              )
+            })}
+            
+            
+            </datalist>
           <br />
           <label htmlFor="image">Image: </label>
           <input className = "addFormField" type="text" name="image" onChange={handleChange} value={entry.image} />
