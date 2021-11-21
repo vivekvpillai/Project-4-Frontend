@@ -11,7 +11,9 @@ const Add = (props) => {
 
 
   const handleChange = (event) => {
+    //looks for invisible separator to see if dropdown was used
     if (event.currentTarget.value.slice(-1) === '\u2063') {
+      //removes invisible separator
       let foodName = event.currentTarget.value.slice(0, -1);
       let foundFood = props.entries.filter((food) => food.name === foodName)
       const myObject = { name: foundFood[0].name, image: foundFood[0].image, calories: foundFood[0].calories, linked_users: [] }
@@ -33,7 +35,7 @@ const Add = (props) => {
   }
 
   const submitSearch = (event) => {
-    console.log('wow')
+    // console.log('wow')
     event.preventDefault()
     axios
       .get('https://api.calorieninjas.com/v1/nutrition?query=' + query,
@@ -41,8 +43,8 @@ const Add = (props) => {
         // ,contentType: 'application/json',
       ).then(
         (data) => {
-          console.log(data)
-          console.log(data.data.items[0].calories)
+          // console.log(data)
+          // console.log(data.data.items[0].calories)
           setFoodCal(data.data.items[0].calories)
         }
       )
