@@ -31,7 +31,8 @@ A user's model was added to allow creations of users. For security reasons Bcryp
 
 #### Front-End:
 The Front-End application was created using a JavaScript framework called React. Using the routes created in the Back-End, users are able to view logs, post logs, delete logs, and edit logs. Using JavaScript logic and functionality, users are able to log in and view logs that only they posted. Using a JavaScript library called 'Chart.js' the users are able to view a bar chart that displays the total calories consumed per day. JavaScript library 'Moment.js' was also used to parse the date of when the log was created into readable time.
-API named 'calorieninjas' was also implemented to provide users with the ability to search calories of foods that they do not know the calories of. The search foods structure/functionality is similar to the ADD and EDIT components (forms).
+An API named 'calorieninjas' also was implemented to provide users with the ability to search calories of foods that they do not know the calories of. The search foods structure/functionality is similar to the ADD and EDIT components (forms).
+Additionaly, an html datalist was added to the ADD component. As a user enters a food name that already is in the database, it will appear in the dropdown of the input. If selected by the user, then the other fields will populate with the database values.
 For styling the application; the CSS layouts that we used on majority of the application were CSS FlexBox and CSS Grid.
 
 ### Future Adjustments
