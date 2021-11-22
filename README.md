@@ -35,13 +35,12 @@ API named 'calorieninjas' was also implemented to provide users with the ability
 For styling the application; the CSS layouts that we used on majority of the application were CSS FlexBox and CSS Grid.
 
 ### Future Adjustments
-- Add a function that allows Users to search back-end API for foods that were logged by other users
 - Add an additional model that allows Users to log their workouts
     - Using the workout model, have the application calculate total consumed calories minus calories exhausted
 - Create achievement badges for certain food groups (ex. "Super Foods"), nutritional goals, or dietary goals
 
 ### Live App Links
 #### Back-End
-    - https://powerful-sierra-13214.herokuapp.com/
+https://powerful-sierra-13214.herokuapp.com/
 #### Front-End
-    - https://protected-caverns-56689.herokuapp.com/
+https://protected-caverns-56689.herokuapp.com/
