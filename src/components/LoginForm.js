@@ -17,7 +17,7 @@ const Login = (props) => {
     return (
       <div>
         <details>
-            <summary>Login</summary>
+            <summary className="LoginDrop">Login</summary>
             <form onSubmit={submitLogin}>
                 <label htmlFor="email">Email: </label>
                 <br />

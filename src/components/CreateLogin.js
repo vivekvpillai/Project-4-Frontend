@@ -17,7 +17,7 @@ const CreateLogin = (props) => {
     return (
       <>
           <details>
-                <summary>Create a User</summary>
+                <summary className="CreateDrop">Create a User</summary>
                 <form onSubmit={submitLogin}>
                   <label htmlFor="email">Email: </label>
                   <br />
