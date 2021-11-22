@@ -19,7 +19,7 @@
 ### User Stories
 1. Allow Users to create and log into their own accounts
 2. Users can log the foods (name, food image, calories, & date of entry) into the application
-3. Users also have the ability to search for foods through the third party API to obtain the calorie count for the searched food
+3. Users also have the ability to search for foods through the third-party API to obtain the calorie count for the searched food
 4. Users can edit their logged foods
 5. Once the User is signed in, the application will provide them with a chart that displays the calories per day and also the total calories logged
 
@@ -31,7 +31,8 @@ A user's model was added to allow creations of users. For security reasons Bcryp
 
 #### Front-End:
 The Front-End application was created using a JavaScript framework called React. Using the routes created in the Back-End, users are able to view logs, post logs, delete logs, and edit logs. Using JavaScript logic and functionality, users are able to log in and view logs that only they posted. Using a JavaScript library called 'Chart.js' the users are able to view a bar chart that displays the total calories consumed per day. JavaScript library 'Moment.js' was also used to parse the date of when the log was created into readable time.
-API named 'calorieninjas' was also implemented to provide users with the ability to search calories of foods that they do not know the calories of. The search foods structure/functionality is similar to the ADD and EDIT components (forms).
+An API named 'calorieninjas' also was implemented to provide users with the ability to search calories of foods that they do not know the calories of. The search foods structure/functionality is similar to the ADD and EDIT components (forms).
+Additionaly, an html datalist was placed in the ADD component. As a user enters a food name that already exists in the database, it will appear in the dropdown of the input. If selected by the user, then the other fields will populate with the database values.
 For styling the application; the CSS layouts that we used on majority of the application were CSS FlexBox and CSS Grid.
 
 ### Future Adjustments

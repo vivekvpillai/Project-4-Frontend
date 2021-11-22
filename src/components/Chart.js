@@ -23,7 +23,7 @@ const Chart = (props) => {
             let sum = 0
             for (let j = 0; j < props.userEntries.length; j++){
                 let date = (moment(props.userEntries[j].created_at).format('MM-DD-YYYY'))
-                if (date == tempDateArr[i]) {
+                if (date === tempDateArr[i]) {
                     sum += props.userEntries[j].calories
                     // console.log(sum);
                 }
