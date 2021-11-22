@@ -80,7 +80,7 @@ const Add = (props) => {
       </div>
 
       <div className="searchCals">
-        <h1>Search A Food's Calorie</h1>
+        <h1>Search Third Party's API</h1>
         <form onSubmit={submitSearch}>
           <label htmlFor="search">Search: </label>
           <br />
@@ -89,7 +89,7 @@ const Add = (props) => {
           <input className="searchBtn" type="submit" value="Search" />
           <br />
         </form>
-        <p><u>Calories: {foodCal}</u></p>
+        <p className = "calSearch">Calories: {foodCal}</p>
       </div>
     </>
   )
