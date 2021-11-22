@@ -163,6 +163,7 @@ function App() {
     getUserEntries()
   }, [])
 
+
     return (
         <div className="container">
             <Header />
@@ -190,7 +191,7 @@ function App() {
                         <>
                             <div className="addComp">
                                 <div className="addCompTextbox">
-                                    <Add handleCreate={handleCreate} user={user} />
+                                    <Add handleCreate={handleCreate} entries={entries} user={user} />
                                     <button className="addClose" onClick={revealAdd}>Close</button>
                                 </div>
                             </div>
@@ -244,6 +245,7 @@ function App() {
                         })}
                     </div>
                 }
+
                 </div>
             <Footer />
         </div>
