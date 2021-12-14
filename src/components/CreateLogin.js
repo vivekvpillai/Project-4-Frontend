@@ -3,6 +3,7 @@ import React, { useState } from 'react'
 const CreateLogin = (props) => {
     let emptyEntry = { email: '', password: '' }
     const [entry, setEntry] = useState(emptyEntry)
+    const [showCreate, setShowCreate] = useState(false)
 
     const handleChange = (event) => {
       setEntry({...entry, [event.target.name]: event.target.value})
@@ -14,10 +15,16 @@ const CreateLogin = (props) => {
       props.newLogin(entry)
     }
 
+    const toggleShow = () => {
+      showCreate ? setShowCreate(false) : setShowCreate(true)
+    }
+
     return (
       <>
-          <details>
-                <summary className="CreateDrop">Create a User</summary>
+        <div className="SignContainer">
+          <div>
+                <p className="Createbt" onClick={toggleShow}>Sign Up</p>
+                {showCreate?
                 <form onSubmit={submitLogin}>
                   <label htmlFor="email">Email: </label>
                   <br />
@@ -29,7 +36,11 @@ const CreateLogin = (props) => {
                   <br/>
                   <input className = "registerBtn" type="submit" value="Register"/>
                 </form>
-          </details>
+                    :
+                   <></>
+                }
+          </div>
+        </div>
       </>
     )
 

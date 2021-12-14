@@ -34,7 +34,7 @@ const SearchBar = () => {
       <label htmlFor="search">Search: </label>
       <input type="text" name="search" value={query} onChange={handleChange} />
       <br/>
-      <input type="submit" value="Register"/>
+      <input className="searchButton" type="submit" value="Register"/>
     </form>
     </div>
   );

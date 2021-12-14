@@ -1,10 +1,12 @@
 @import url('https://fonts.googleapis.com/css2?family=Oxygen&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@500&display=swap');
 
 body {
     margin: 0;
     border-radius: 3px;
     font-family: 'Oxygen', sans-serif;
-    background: beige;
+    background: white;
 }
 
 button {
@@ -29,7 +31,10 @@ button {
     background: darkslategray;
     color: white;
     margin-top: 2%;
-
+    font-family: 'Comfortaa', cursive;
+    font-weight: bolder;
+    font-size: 130%;
+    width:
 }
 
 .nav {
@@ -38,6 +43,7 @@ button {
     background: darkslategray;
     margin-top: 2%;
     padding-bottom: 4%;
+    border-radius: 20px
 }
 
 .userNav {
@@ -52,6 +58,15 @@ button {
     color: white;
 }
 
+.SignContainer{
+  display: flex;
+  flex-direction:
+}
+
+.logContainer{
+  width: 158px
+}
+
 .logOutBtn {
     border-radius: 3px;
     background: gainsboro;
@@ -59,21 +74,29 @@ button {
     height: 4vh;
     width: 10vw;
     margin-left: 2%;
+    cursor: pointer
+}
+
+.logOutBtn:hover{
+  background-color: white;
+  color: darkslategray
 }
 
 .LoginDrop:hover{
-  text-decoration: underline;
+  font-weight: bolder;
 }
 
-.CreateDrop:hover{
-  text-decoration: underline;
+.Createbt:hover{
+  font-weight: bolder;
 }
 
 .noUserNav {
     color: white;
     display: flex;
     width: 35%;
-    justify-content: space-between;
+    height: 50%;
+    gap: 10vw;
+    font-family: 'Comfortaa', cursive;
 }
 
 .registerBtn {
@@ -83,6 +106,12 @@ button {
     width: 10vw;
     height: 4vh;
     margin-top: 2%;
+    cursor: pointer
+}
+
+.registerBtn{
+  background-color: white;
+  color: darkslategray
 }
 
 .loginBtn {
@@ -92,6 +121,12 @@ button {
     width: 10vw;
     height: 4vh;
     margin-top: 2%;
+    cursor: pointer;
+}
+
+.loginBtn{
+  background-color: white;
+  color: darkslategray
 }
 
 .calories {
@@ -103,6 +138,7 @@ button {
     align-items: center;
     color: white;
     height: 70vh;
+    border-radius: 20px
 }
 
 .barChart {
@@ -113,7 +149,7 @@ button {
 
 .entries {
     display: grid;
-    grid-template-columns: 33% 33% 33%;
+    grid-template-columns: 32% 32% 32%;
     justify-content: space-between;
     margin-bottom: 2%;
 }
@@ -123,15 +159,23 @@ button {
     padding-left: 2.5%;
     margin-top: 8%;
     color: white;
+    border-radius: 20px
 }
 
 .entryName {
     text-align: center;
+    font-family: 'Comfortaa', cursive;
 }
 
 .imgOne {
-    width: 30vw;
-    height: 40vh;
+    max-width: 26.8vw;
+    max-height: 26.8vh;
+}
+
+.imgCont{
+  display: flex;
+  justify-content: center;
+  align-content: center;
 }
 
 .add {
@@ -148,10 +192,16 @@ button {
     margin-bottom: 2%;
     width: 30vw;
     height: 3vh;
+    cursor: pointer
+}
+
+.addBtn:hover{
+  background-color: gainsboro;
+  color: darkslategray
 }
 
 .addComp {
-    background-color: rgba(0,0,0,0.4);
+  background-color: rgba(0,0,0,0.4);
 	position: fixed;
 	top: 0;
 	left: 0;
@@ -188,6 +238,12 @@ button {
     height: 3vh;
     width: 10vw;
     margin-top: 3%;
+    cursor: pointer
+}
+
+.searchBtn:hover{
+  background-color: white;
+  color: darkslategray;
 }
 
 .calSearch {
@@ -220,6 +276,12 @@ button {
     color: white;
     height: 3vh;
     width: 10vw;
+    cursor: pointer
+}
+
+.addSubmit:hover{
+  background-color: white;
+  color: darkslategray
 }
 
 .addClose {
@@ -231,6 +293,12 @@ button {
     position: absolute;
     left: 45%;
     bottom: 10%;
+    cursor: pointer;
+}
+
+.addClose:hover{
+  background-color: white;
+  color: darkslategray
 }
 
 .bodyBot {
@@ -246,6 +314,12 @@ button {
     margin-bottom: 4%;
     background: gainsboro;
     color: black;
+    cursor: pointer
+}
+
+.deleteBtn:hover{
+  background-color: white;
+  color: darkslategray
 }
 
 .editForm {
@@ -268,6 +342,12 @@ button {
     border-radius: 3px;
     background: darkslategray;
     color: white;
+    cursor: pointer;
+}
+
+.editSubmit:hover {
+    background-color: white;
+    color: darkslategray
 }
 
 .footerDiv {
@@ -278,6 +358,7 @@ button {
     background: darkslategray;
     color: white;
     margin-bottom: 2%;
+    padding-top: 0.6%
 }
 
 .footerDiv > div {
@@ -287,9 +368,13 @@ button {
 }
 
 .footerIcon {
-    width: 2vw;
-    height: 4vh;
-    margin-left: 2.5px;
-    margin-right: 2.5px;
-    margin-top: -1vh;
+    max-width: 2.2vw;
+    max-height: 4vh;
+    margin-left: 1vh;
+    margin-right: 1vh;
+    margin-top: -.6vh;
+}
+
+.timestamp{
+  font-size: 70%
 }

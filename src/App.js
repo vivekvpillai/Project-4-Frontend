@@ -217,13 +217,15 @@ function App() {
                             return (
                                 <div className="entry" key={entry.id}>
                                     <h3 className = "entryName">Food: {entry.name}</h3>
-                                    <img className="imgOne" src={entry.image} />
+                                    <div className="imgCont">
+                                      <img className="imgOne" src={entry.image} />
+                                    </div>
                                     <br />
                                     <div className="bodyBot">
                                         <Edit handleUpdate={handleUpdate} entry={entry} />
                                     </div>
-                                    <h3>Calories: {entry.calories}</h3>
-                                    <h3>Date: {moment(entry.created_at).format('MM-DD-YYYY')}</h3>
+                                    <h3>{entry.calories} Calories</h3>
+                                    <h3 className="timestamp">{moment(entry.created_at).format('MM-DD-YYYY')}</h3>
                                     <button className="deleteBtn" onClick={handleDelete} value={entry.id}>Remove</button>
                                 </div>
                             )
@@ -235,11 +237,13 @@ function App() {
                         {entries.map((entry) => {
                             return (
                             <div className="entry" key={entry.id}>
-                                <h3 className = "entryName">Food: {entry.name}</h3>
-                                <img className="imgOne" src={entry.image} />
+                                <h3 className = "entryName"> {entry.name}</h3>
+                                <div className="imgCont">
+                                  <img className="imgOne" src={entry.image} />
+                                </div>
                                 <br />
-                                <h3>Entry Date: {moment(entry.created_at).format('MM-DD-YYYY')}</h3>
-                                <h3>Calories: {entry.calories}</h3>
+                                <h3>{entry.calories} Calories</h3>
+                                <h3 className="timestamp">{moment(entry.created_at).format('MM-DD-YYYY')}</h3>
                             </div>
                             )
                         })}
