@@ -315,7 +315,8 @@ button {
     background: gainsboro;
     color: black;
     cursor: pointer;
-    width: 70%
+    width: 70%;
+    margin-left: 1vh
 }
 
 .deleteBtn:hover{
@@ -378,5 +379,6 @@ button {
 }
 
 .timestamp{
-  font-size: 70%
+  font-size: 70%;
+  margin-left: 1vh
 }
