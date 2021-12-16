@@ -95,7 +95,7 @@ button {
     display: flex;
     width: 35%;
     height: 50%;
-    gap: 10vw;
+    gap: 9vw;
     font-family: 'Comfortaa', cursive;
 }
 
@@ -139,6 +139,10 @@ button {
     color: white;
     height: 70vh;
     border-radius: 20px
+}
+
+.Calsentr{
+  padding-left: 1vh
 }
 
 .barChart {

@@ -224,7 +224,7 @@ function App() {
                                     <div className="bodyBot">
                                         <Edit handleUpdate={handleUpdate} entry={entry} />
                                     </div>
-                                    <h3>{entry.calories} Calories</h3>
+                                    <h3 className="Calsentr">{entry.calories} Calories</h3>
                                     <h3 className="timestamp">{moment(entry.created_at).format('MM-DD-YYYY')}</h3>
                                     <button className="deleteBtn" onClick={handleDelete} value={entry.id}>Remove</button>
                                 </div>
