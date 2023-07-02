@@ -40,8 +40,4 @@ For styling the application; the CSS layouts that we used on majority of the app
     - Using the workout model, have the application calculate total consumed calories minus calories exhausted
 - Create achievement badges for certain food groups (ex. "Super Foods"), nutritional goals, or dietary goals
 
-### Live App Links
-#### Back-End
-https://powerful-sierra-13214.herokuapp.com/
-#### Front-End
-https://protected-caverns-56689.herokuapp.com/
+Back-End Link: https://github.com/vivekvpillai/Project-4-Backend
